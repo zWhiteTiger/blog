@@ -49,6 +49,8 @@ The project supports two search modes:
 - Exact match → redirects to blog detail page
 
 ---
+## 🏗️ Project Structure
+
 ```bash
 app/
 ├── page.tsx (Home - Quick Search)
@@ -82,5 +84,3 @@ yarn build
 yarn start
 
 ```
-
-## 🏗️ Project Structure
