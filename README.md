@@ -27,7 +27,6 @@ A modern blog platform built with **Next.js (App Router)** and **shadcn/ui**, de
 
 - 🔍 Smart blog search (quick search + full search)
 - 📄 Blog listing with dynamic routing
-- ⚡ Server-side rendering (SEO optimized)
 - 🎯 Client-side interactions (search, dropdown, navigation)
 - 🧩 Reusable UI components (shadcn/ui)
 - 🔐 Authentication system (NextAuth)
