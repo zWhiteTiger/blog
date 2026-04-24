@@ -1,9 +1,5 @@
-import React from 'react'
+import { redirect } from 'next/navigation'
 
-type Props = {}
-
-export default function ManagePage({ }: Props) {
-    return (
-        <div>Manage Page</div>
-    )
+export default function Manage() {
+    redirect('/manage/blog')
 }

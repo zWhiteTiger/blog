@@ -1,0 +1,34 @@
+# Page Routing
+# /  == (301) --> /home (ƒ)
+
+# /home
+# /blog
+/blog/[slug]
+# /blog?search=[search param]
+
+/manage/blog
+/manage/blog/new
+# /manage/blog/[slug]/edit
+/manage/blog/[slug]/comment
+
+# /auth/signin
+# /auth/signup
+/auth/signout
+
+# Backend Routing
+
+# (ƒ) /api/[version]
+
+# (POST) /api/auth/signin
+# (POST) /api/auth/signup
+
+# (POST) /api/v1/upload
+
+# (GET) /api/[version]/users/me
+
+# (GET) /api/[version]/blogs
+# (GET,POST,PATCH) /api/[version]/blogs/[slug]
+(GET,POST,PATCH) /api/[version]/blogs/[slug]/comment
+
+
+> Markdown ? Dynamic form ?
