@@ -13,7 +13,7 @@
 
 # /auth/signin
 # /auth/signup
-/auth/signout
+# /auth/signout
 
 # Backend Routing
 
@@ -31,4 +31,4 @@
 # (GET,POST,PATCH) /api/[version]/blogs/[slug]/comment
 
 
-> Dynamic form
+# > Dynamic form

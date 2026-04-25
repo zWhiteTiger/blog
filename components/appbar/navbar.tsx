@@ -24,7 +24,7 @@ const ListMenu: { title: string; href: string; icon: React.ReactNode }[] = [
     },
     {
         title: "Write",
-        href: "/blog/create",
+        href: "/manage/blog",
         icon: <RiPenNibLine />
     }
 ]
