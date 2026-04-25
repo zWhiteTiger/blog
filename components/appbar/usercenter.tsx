@@ -95,10 +95,12 @@ export function UserCenter() {
                                 Dashboard
                             </DropdownMenuItem>
 
-                            <DropdownMenuItem>
-                                <RiListSettingsLine />
-                                Manage
-                            </DropdownMenuItem>
+                            <Link href={"/manage/blog"}>
+                                <DropdownMenuItem>
+                                    <RiListSettingsLine />
+                                    Manage
+                                </DropdownMenuItem>
+                            </Link>
 
                             <DropdownMenuLabel>Settings</DropdownMenuLabel>
 
@@ -186,7 +188,7 @@ export function UserCenter() {
 
                         <DropdownMenuGroup>
                             <DropdownMenuItem
-                                onClick={() => signOut({ callbackUrl: "/auth/login" })}
+                                onClick={() => signOut({ callbackUrl: "/auth/signin" })}
                             >
                                 <p className="text-red-600 flex flex-row gap-2">
                                     <RiLogoutBoxRLine /> Log out

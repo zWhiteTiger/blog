@@ -7,6 +7,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import TypographyPanel from "./utils/typo";
 import BlogCover from "./utils/blogcover";
 import { useEffect, useState } from "react";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { RiArrowLeftSLine } from "@remixicon/react";
 
 type Props = {
     slug: string
@@ -37,7 +40,13 @@ export default function Sidebar({ slug, setIsDirty }: Props) {
         >
 
             <div className='flex flex-row justify-between items-center'>
-                <DropMenu />
+                {/* <DropMenu /> */}
+
+                <Link href={"/manage/blog"}>
+                    <Button variant={"ghost"}>
+                        <RiArrowLeftSLine />
+                    </Button>
+                </Link>
             </div>
 
             <div className='flex flex-col gap-2'>

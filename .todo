@@ -3,13 +3,13 @@
 
 # /home
 # /blog
-/blog/[slug]
+# /blog/[slug]
 # /blog?search=[search param]
 
-/manage/blog
-/manage/blog/new
+# /manage/blog
+# /manage/blog/ + create modal
 # /manage/blog/[slug]/edit
-/manage/blog/[slug]/comment
+# /manage/blog/[slug]/comment
 
 # /auth/signin
 # /auth/signup
@@ -28,7 +28,7 @@
 
 # (GET) /api/[version]/blogs
 # (GET,POST,PATCH) /api/[version]/blogs/[slug]
-(GET,POST,PATCH) /api/[version]/blogs/[slug]/comment
+# (GET,POST,PATCH) /api/[version]/blogs/[slug]/comment
 
 
-> Markdown ? Dynamic form ?
+> Dynamic form

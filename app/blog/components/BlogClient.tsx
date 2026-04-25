@@ -28,20 +28,30 @@ export default function BlogClient() {
     const [page, setPage] = useState(1)
     const [totalPages, setTotalPages] = useState(1)
 
-    useEffect(() => {
-        async function fetchBlogs() {
-            const res = await fetch(
-                `/api/v1/blogs/public?page=${page}&search=${keyword}`
-            )
-            const data = await res.json()
+    const [users, setUsers] = useState<any[]>([])
 
-            setBlogs(data.data)
-            setTotalPages(data.totalPages)
+    useEffect(() => {
+        async function fetchData() {
+
+            const [blogRes, userRes] = await Promise.all([
+                fetch(`/api/v1/blogs/public?page=${page}&search=${keyword}`),
+                fetch(`/api/v1/users`)
+            ])
+
+            const blogData = await blogRes.json()
+            const userData = await userRes.json()
+
+            setBlogs(blogData.data)
+            setTotalPages(blogData.totalPages)
+            setUsers(userData)
         }
 
-        fetchBlogs()
+        fetchData()
     }, [page, keyword])
 
+    const userMap = new Map(
+        users.map(u => [u._id, `${u.firstName} ${u.lastName}`])
+    )
 
     return (
         <div className="flex flex-col gap-6 px-4 py-5">
@@ -100,17 +110,17 @@ export default function BlogClient() {
                                     </h2>
 
                                     <p className="text-sm text-muted-foreground line-clamp-3">
-                                        {blog.owner}
+                                        {userMap.get(blog.owner) || "Unknown user"}
                                     </p>
                                 </CardContent>
 
                                 <CardFooter className="w-full">
                                     <div className="w-full">
                                         <Link href={`/blog/${blog.slug}`}>
-                                        <Button className="w-full">
-                                            Open
-                                        </Button>
-                                    </Link>
+                                            <Button className="w-full">
+                                                Open
+                                            </Button>
+                                        </Link>
                                     </div>
 
                                 </CardFooter>

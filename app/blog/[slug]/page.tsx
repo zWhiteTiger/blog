@@ -4,6 +4,8 @@ import React, { useEffect, useRef, useState } from "react"
 import { useParams } from "next/navigation"
 import Image from "next/image"
 import { useSession } from "next-auth/react"
+import { RiSendPlaneFill } from "@remixicon/react"
+import { Button } from "@/components/ui/button"
 
 type Block = {
     id: string
@@ -167,12 +169,13 @@ export default function BlogPage() {
                         className="border p-2 w-full"
                     />
 
-                    <button
+                    <Button
+                        variant={"outline"}
                         onClick={submitComment}
-                        className="bg-black text-white px-4 py-2"
+                        className="text-white px-4 py-2"
                     >
-                        ส่งคอมเมนต์
-                    </button>
+                        Send <RiSendPlaneFill />
+                    </Button>
                 </div>
 
                 <div className="space-y-3">

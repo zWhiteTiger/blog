@@ -16,7 +16,6 @@ export async function POST(req: Request) {
             )
         }
 
-        // 🔥 สร้าง slug จาก title
         const baseSlug = generateSlug(body.title)
         const slug = await generateUniqueSlug(baseSlug)
 
@@ -43,10 +42,28 @@ export async function POST(req: Request) {
     }
 }
 
-export async function GET() {
+export async function GET(req: Request) {
     await connectDB()
 
-    const blogs = await Blog.find().sort({ createdAt: -1 })
+    const { searchParams } = new URL(req.url)
+
+    const owner = searchParams.get("owner")
+    const search = searchParams.get("search")
+
+    let query: any = {}
+
+    if (owner) {
+        query.owner = owner
+    }
+
+    if (search) {
+        query.title = {
+            $regex: search,
+            $options: "i"
+        }
+    }
+
+    const blogs = await Blog.find(query).sort({ createdAt: -1 })
 
     return NextResponse.json(blogs)
 }

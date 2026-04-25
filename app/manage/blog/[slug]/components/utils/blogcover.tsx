@@ -1,7 +1,9 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Image from "next/image"
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
 
 type Props = {
     value?: string
@@ -9,22 +11,24 @@ type Props = {
     slug: string
 }
 
-async function uploadImage(file: File) {
-    const formData = new FormData()
-    formData.append("file", file)
-
-    const res = await fetch("/api/v1/upload", {
-        method: "POST",
-        body: formData
-    })
-
-    const data = await res.json()
-    return data.url as string
-}
-
 export default function BlogCover({ value, onChange, slug }: Props) {
 
     const [loading, setLoading] = useState(false)
+
+    async function uploadImage(file: File) {
+        const formData = new FormData()
+        formData.append("file", file)
+
+        const res = await fetch("/api/v1/upload", {
+            method: "POST",
+            body: formData
+        })
+
+        const data = await res.json()
+
+        return data.url as string
+    }
+
 
     async function handleUpload(e: React.ChangeEvent<HTMLInputElement>) {
         const file = e.target.files?.[0]

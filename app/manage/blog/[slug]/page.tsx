@@ -111,8 +111,6 @@ export default function ManageBlog() {
 
     function buildPayload() {
         return {
-            slug: "my-blog",
-            owner: "user-id",
             status: "draft",
             isPublic,
 

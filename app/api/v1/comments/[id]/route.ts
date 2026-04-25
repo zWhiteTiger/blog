@@ -4,16 +4,20 @@ import { NextResponse } from "next/server"
 
 export async function PATCH(
     req: Request,
-    context: { params: Promise<{ slug: string }> }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     await connectDB()
 
-    const { slug } = await context.params
-
     const body = await req.json()
 
+    const allowed = ["pending", "approved", "rejected"]
+
+    if (!allowed.includes(body.status)) {
+        return NextResponse.json({ message: "Invalid status" }, { status: 400 })
+    }
+
     const updated = await Comment.findByIdAndUpdate(
-        slug,
+        (await params).id,
         { status: body.status },
         { new: true }
     )
@@ -23,13 +27,11 @@ export async function PATCH(
 
 export async function DELETE(
     _: Request,
-    context: { params: Promise<{ slug: string }> }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     await connectDB()
 
-    const { slug } = await context.params
-
-    await Comment.findByIdAndDelete(slug)
+    await Comment.findByIdAndDelete((await params).id)
 
     return NextResponse.json({ success: true })
 }
