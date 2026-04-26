@@ -3,6 +3,7 @@ import { Geist, JetBrains_Mono } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
 import { cn } from "@/lib/utils";
 import { Providers } from "./providers";
+import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 
 const fontSans = Geist({
@@ -24,6 +25,7 @@ export default function RootLayout({
       className={cn("antialiased", fontSans.variable, "font-mono", jetbrainsMono.variable)}
     >
       <body>
+        <Analytics />
         <ThemeProvider>
           <Providers>{children}</Providers>
         </ThemeProvider>
